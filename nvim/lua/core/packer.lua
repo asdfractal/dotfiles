@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
         }
     }
     use 'ray-x/go.nvim'
+    use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
     --
 
     use('ojroques/nvim-hardline')
@@ -77,6 +78,7 @@ return require('packer').startup(function(use)
     use('eandrju/cellular-automaton.nvim')
     use({
         -- https://github.com/adrian5/oceanic-next-vim
+        -- git clone https://github.com/adrian5/oceanic-next-vim.git ~/.local/share/nvim/site/pack/plugins/start/oceanic-next-vim
         os.getenv("HOME") .. '/.local/share/nvim/site/pack/plugins/start/oceanic-next-vim',
         as = 'oceanicnext',
         config = function()

@@ -28,4 +28,4 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = ""
 
-vim.cmd "autocmd BufWritePre * lua vim.lsp.buf.format()"
+-- vim.cmd "autocmd BufWritePre * lua vim.lsp.buf.format()"

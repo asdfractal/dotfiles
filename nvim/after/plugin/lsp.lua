@@ -1,10 +1,16 @@
 local lsp = require('lsp-zero')
+local lspconfig = require('lspconfig')
 
 lsp.preset('recommended')
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'tsserver', 'rust_analyzer', 'pyright', },
+    ensure_installed = {
+        'tsserver',
+        'rust_analyzer',
+        'pyright',
+        'gopls',
+    },
     handlers = {
         lsp.default_setup,
     },
@@ -73,7 +79,9 @@ lsp.format_on_save({
     }
 })
 
-require('lspconfig').ruff_lsp.setup {
+lspconfig.gopls.setup {}
+
+lspconfig.ruff_lsp.setup {
     on_attach = function(client, bufnr) end,
     init_options = {
         settings = {
@@ -83,10 +91,8 @@ require('lspconfig').ruff_lsp.setup {
     }
 }
 
-lsp.setup()
-
-require 'lspconfig'.pyright.setup {}
-require 'lspconfig'.lua_ls.setup {
+lspconfig.pyright.setup {}
+lspconfig.lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {
@@ -96,6 +102,14 @@ require 'lspconfig'.lua_ls.setup {
     }
 }
 
+lsp.setup()
+
 vim.diagnostic.config({
     virtual_text = true
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    callback = function()
+        vim.lsp.buf.format()
+    end
 })

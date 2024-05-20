@@ -15,7 +15,7 @@ echo \
 # Install Docker Engine
 apt update
 apt install -y docker docker-ce docker-ce-cli containerd.io
-apt install -y docker-compose docker-compose-plugin
+apt install -y docker-compose docker-compose-plugin docker
 
 # Add user to docker group
 if [ ! -n "$(getent group | grep "docker")" ]; then
