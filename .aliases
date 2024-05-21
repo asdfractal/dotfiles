@@ -41,6 +41,8 @@ alias gra="git remote add"
 alias grv="git remote -v"
 alias gck="git checkout"
 
+alias lg="lazygit"
+
 # Pipenv
 alias pi="pipenv install"
 alias psh="pipenv shell"
