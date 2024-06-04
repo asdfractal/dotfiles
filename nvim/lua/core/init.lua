@@ -3,8 +3,8 @@ require("core.set")
 require("core.packer")
 require('tabnine').setup({
     disable_auto_comment = true,
-    accept_keymap = "<F9>",
     -- accept_keymap = "<Tab>",
+    accept_keymap = "<F9>",
     dismiss_keymap = "<C-]>",
     debounce_ms = 800,
     suggestion_color = { gui = "#808080", cterm = 244 },

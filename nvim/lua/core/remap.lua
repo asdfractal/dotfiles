@@ -56,3 +56,16 @@ vim.keymap.set("i", "<C-l>", "<Esc>A;<Esc>o")
 -- new line without insert mode
 vim.keymap.set("n", "<leader>o", "o<esc>")
 vim.keymap.set("n", "<leader>O", "O<esc>")
+
+-- DAP
+vim.keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>")
+vim.keymap.set("n", "<leader>dr", "<cmd> DapContinue <CR>")
+
+local pattern = [[\v['"({[< ]@<=(\w)|^(\w)|([]'"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
+vim.keymap.set({ 'n', 'v' }, '<leader>W', function()
+    vim.fn.search(pattern)
+end)
+vim.keymap.set({ 'n', 'v' }, '<leader>B', function()
+    --(word) backwards
+    vim.fn.search(pattern, 'b')
+end)

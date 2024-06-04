@@ -12,7 +12,8 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use('nvim-treesitter/nvim-treesitter-context')
 
     use({
         "aaronhallaert/advanced-git-search.nvim",
@@ -32,7 +33,13 @@ return require('packer').startup(function(use)
         end,
         -- rocks = { 'prec2' }
     }
-    use('ThePrimeagen/harpoon')
+
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
+
     --
 
     -- LSP/Language
@@ -60,6 +67,26 @@ return require('packer').startup(function(use)
     }
     use 'ray-x/go.nvim'
     use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
+    use 'mfussenegger/nvim-dap'
+    use {
+        'jay-babu/mason-nvim-dap.nvim',
+        requires = {
+            { 'williamboman/mason.nvim' },
+            { 'mfussenegger/nvim-dap' },
+        }
+    }
+    use { 'rcarriga/nvim-dap-ui',
+        requires = {
+            { 'mfussenegger/nvim-dap' },
+            { 'nvim-neotest/nvim-nio' },
+        }
+    }
+    use { 'zadirion/Unreal.nvim',
+        requires =
+        {
+            { "tpope/vim-dispatch" }
+        }
+    }
     --
 
     use('ojroques/nvim-hardline')

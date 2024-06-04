@@ -1,6 +1,9 @@
 local lsp = require('lsp-zero')
 local lspconfig = require('lspconfig')
 
+-- local base = require("package.lspconfig.capabilitieso")
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 lsp.preset('recommended')
 
 require('mason').setup({})
@@ -10,6 +13,7 @@ require('mason-lspconfig').setup({
         'rust_analyzer',
         'pyright',
         'gopls',
+        'clangd',
     },
     handlers = {
         lsp.default_setup,
@@ -27,6 +31,7 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        -- ['<F9>'] = cmp.mapping.confirm({ select = true }),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -101,6 +106,19 @@ lspconfig.lua_ls.setup {
         }
     }
 }
+
+lspconfig.clangd.setup {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        client.server_capabilities.signatureHelpPropvider = false
+    end,
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+    },
+}
+
+
 
 lsp.setup()
 
