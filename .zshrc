@@ -38,7 +38,7 @@ export PATH="$HOME/bin":"$HOME/.local/bin":"/usr/local/go/bin":"$HOME/projects/g
 fpath=($fpath "$HOME/.zfunctions")
 
 autoload -Uz compinit && compinit
-autoload -Uz mkd py
+autoload -Uz mkd py rfv
 
 source $ZSH/oh-my-zsh.sh
 
