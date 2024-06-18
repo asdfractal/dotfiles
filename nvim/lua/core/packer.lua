@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
     })
 
     use {
-        'gelguy/wilder.nvim',
+        'asdfractal/wilder.nvim',
         config = function()
         end,
         -- rocks = { 'prec2' }

@@ -19,6 +19,8 @@ require('mason-lspconfig').setup({
         lsp.default_setup,
     },
 })
+-- ruff / rufflsp
+
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
