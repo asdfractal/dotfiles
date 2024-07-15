@@ -64,10 +64,6 @@ bindkey '^[[B' history-substring-search-down # Down key
 # HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=1' # not working
 # HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=1' # not working
 
-# https://github.com/junegunn/fzf
-# Fuzzy finder
-source <(fzf --zsh)
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
@@ -78,6 +74,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(atuin init zsh)"
+
+# https://github.com/junegunn/fzf
+# Fuzzy finder
+source <(fzf --zsh)
