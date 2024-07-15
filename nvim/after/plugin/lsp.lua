@@ -120,7 +120,7 @@ lspconfig.clangd.setup {
     },
 }
 
-
+lspconfig.tsserver.setup {}
 
 lsp.setup()
 
