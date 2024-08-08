@@ -48,6 +48,7 @@ require('lazy').setup({
     {
         "nvim-pack/nvim-spectre",
     },
+    "wsdjeg/vim-fetch",
 
     -- LSP/Language
     'nvimtools/none-ls.nvim',
