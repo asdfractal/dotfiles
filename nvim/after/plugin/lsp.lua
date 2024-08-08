@@ -1,28 +1,30 @@
 local lsp = require('lsp-zero')
 local lspconfig = require('lspconfig')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local mason = require('mason')
+local mason_lspconfig = require('mason-lspconfig')
+-- local mason_null_ls = require('mason-null-ls')
+local keymap = vim.keymap
 
--- local base = require("package.lspconfig.capabilitieso")
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lsp.preset('recommended')
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
+mason.setup({})
+mason_lspconfig.setup({
     ensure_installed = {
         'tsserver',
-        'rust_analyzer',
         'pyright',
         'gopls',
-        'clangd',
     },
+    automatic_installation = true,
     handlers = {
         lsp.default_setup,
     },
 })
--- ruff / rufflsp
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+local cmp_action = lsp.cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
@@ -45,10 +47,6 @@ cmp.setup({
         { name = 'nvim_lsp' },
     }
 })
-
--- lsp.setup_nvim_cmp({
---     mapping = cmp_mappings
--- })
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
@@ -74,6 +72,11 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+
+    if client.name == "eslint" then
+        local ns = vim.lsp.diagnostic.get_namespace(client.id)
+        vim.diagnostic.disable(nil, ns)
+    end
 end)
 
 lsp.format_on_save({
@@ -88,17 +91,8 @@ lsp.format_on_save({
 
 lspconfig.gopls.setup {}
 
-lspconfig.ruff_lsp.setup {
-    on_attach = function(client, bufnr) end,
-    init_options = {
-        settings = {
-            -- Any extra CLI arguments for `ruff` go here.
-            args = {},
-        }
-    }
-}
-
 lspconfig.pyright.setup {}
+
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {
@@ -109,18 +103,26 @@ lspconfig.lua_ls.setup {
     }
 }
 
-lspconfig.clangd.setup {
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        client.server_capabilities.signatureHelpPropvider = false
-    end,
-    cmd = {
-        "clangd",
-        "--offset-encoding=utf-16",
-    },
-}
+-- lspconfig.clangd.setup {
+--     capabilities = capabilities,
+--     on_attach = function(client, bufnr)
+--         client.server_capabilities.signatureHelpPropvider = false
+--     end,
+--     cmd = {
+--         "clangd",
+--         "--offset-encoding=utf-16",
+--     },
+-- }
 
-lspconfig.tsserver.setup {}
+lspconfig.tsserver.setup({
+    on_attach = lsp.on_attach,
+    capabilities = capabilities,
+})
+
+-- lspconfig.eslint.setup({
+--     on_attach = lsp.on_attach,
+--     capabilities = capabilities,
+-- })
 
 lsp.setup()
 

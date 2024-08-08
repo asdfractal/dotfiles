@@ -19,3 +19,9 @@ vim.g.netrw_winsize = 25
 
 vim.g.omni_sql_default_compl_type = 'syntax'
 -- vim.g.python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
+
+-- not needed due to editorconfig
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--     pattern = { "*.ts", "*.js" },
+--     command = ":setlocal tabstop=2 shiftwidth=2 expandtab"
+-- })
