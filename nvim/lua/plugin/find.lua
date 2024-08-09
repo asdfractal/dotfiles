@@ -69,8 +69,7 @@ return {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
 	{
-		'wilder',
-        dir = '~/projects/wilder.nvim',
+        'asdfractal/wilder.nvim',
         config = function()
 			local wilder = require('wilder')
 			wilder.setup({ modes = { ':', '/', '?' } })
