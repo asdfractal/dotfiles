@@ -38,10 +38,10 @@ autocmd('LspAttach', {
 		vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
 
-		if client.name == "eslint" then
-			local ns = vim.lsp.diagnostic.get_namespace(client.id)
-			vim.diagnostic.disable(nil, ns)
-		end
+		-- if client.name == "eslint" then
+		-- 	local ns = vim.lsp.diagnostic.get_namespace(client.id)
+		-- 	vim.diagnostic.disable(nil, ns)
+		-- end
 	end
 })
 
@@ -50,6 +50,6 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 vim.g.omni_sql_default_compl_type = 'syntax'
-vim.g.python3_host_prog = '/usr/local/bin/python3.11'
+vim.g.python3_host_prog = '/usr/bin/python3.11'
 
 vim.g.fzf_vim = {}
