@@ -81,11 +81,17 @@ vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search(
     desc = "Search on current file",
 })
 
+-- Copy absolute/relative path
 vim.keymap.set("n", "<Leader>xx", ":call setreg('+', expand('%:p') .. ':' .. line('.'))<CR>")
 vim.keymap.set("n", "<Leader>xc", ":call setreg('+', expand('%:.') .. ':' .. line('.'))<CR>")
 vim.keymap.set("n", "<Leader>xo", ":e <C-r>+<CR>", { noremap = true, desc = "Go to location in clipboard" })
 
+-- Window nav
 vim.keymap.set("n", "<C-h>", ":wincmd h <CR>")
 vim.keymap.set("n", "<C-j>", ":wincmd j <CR>")
 vim.keymap.set("n", "<C-k>", ":wincmd k <CR>")
 vim.keymap.set("n", "<C-l>", ":wincmd l <CR>")
+
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)
