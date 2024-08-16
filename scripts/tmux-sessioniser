@@ -5,7 +5,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find -L ~/projects/ ~/ /docker /docker/docker-lead/source ~/documents -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find -L ~/projects/ ~/ /docker /docker/docker-lead/source ~/documents /mnt/c/gen /mnt/c/gen/gcvi -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
