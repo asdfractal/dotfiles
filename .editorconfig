@@ -29,6 +29,11 @@ trim_trailing_whitespace = false
 [*.{htm,html,js,jsm,ts,tsx,cjs,cts,ctsx,mjs,mts,mtsx,css,sass,scss,less,pcss,svg,vue}]
 indent_size = 2
 
+# Go Files
+[{Makefile,go.mod,go.sum,*.go,.gitmodules}]
+indent_style = tab
+indent_size = 4
+
 # Batch Files
 [*.{cmd,bat}]
 end_of_line = crlf
@@ -40,3 +45,7 @@ end_of_line = lf
 # Makefiles
 [Makefile]
 indent_style = tab
+
+[Dockerfile]
+indent_style = tab
+indent_size = 4

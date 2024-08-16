@@ -32,6 +32,9 @@ return {
                     settings = {
                         gopls = {
                             usePlaceholders = true,
+                            completeUnimported = true,
+                            staticcheck = true,
+                            semanticTokens = true,
                         },
                     },
                 },
@@ -41,7 +44,7 @@ return {
                     capabilities = capabilities,
                     settings = {
                         Lua = {
-                            runtime = { version = "Lua 5.1" },
+                            runtime = { version = "LuaJIT" },
                             completion = {
                                 callSnippet = "Replace",
                             },
@@ -50,16 +53,32 @@ return {
                             },
                             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                             -- diagnostics = { disable = { 'missing-fields' } },
+                            workspace = {
+                                checkThirdParty = false,
+                                -- library = {
+                                --     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                                --     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                                -- },
+                                library = vim.api.nvim_get_runtime_file("", true),
+                            },
                         },
                     },
                 },
                 tsserver = {},
                 bashls = {},
             }
+
             require("mason").setup()
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 "stylua", -- Used to format Lua code
+                "tsserver",
+                "lua_ls",
+                "gopls",
+                "goimports",
+                "delve",
+                "bashls",
+                "shellcheck",
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
             require("mason-lspconfig").setup({
@@ -160,6 +179,7 @@ return {
                     },
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
+                    { name = "nvim_lua" },
                     { name = "path" },
                 },
             })
@@ -215,6 +235,7 @@ return {
                 --
                 -- You can use 'stop_after_first' to run the first available formatter from the list
                 -- javascript = { "prettierd", "prettier", stop_after_first = true },
+                go = { "goimports" },
             },
         },
     },
@@ -227,6 +248,7 @@ return {
             require("gopher").setup()
         end,
     },
+
     {
         "codota/tabnine-nvim",
         build = "./dl_binaries.sh",

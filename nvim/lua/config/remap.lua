@@ -95,3 +95,5 @@ vim.keymap.set("n", "<C-l>", ":wincmd l <CR>")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- vim.keymap.set("i", "<C-H>", "<C-W>", { noremap = true })

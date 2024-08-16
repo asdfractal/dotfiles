@@ -17,5 +17,4 @@ ln -sf $DOTFILES/.aliases $HOME/.aliases
 ln -sf $DOTFILES/tmux/.tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/tmux/.tmux-cht-languages $HOME/.tmux-cht-languages
 ln -sf $DOTFILES/tmux/.tmux-cht-command $HOME/.tmux-cht-command
-
-ln -sf /mnt/c/Users/james/.aws ~/
+ln -snf $DOTFILES/.editorconfig $HOME/projects/.editorconfig

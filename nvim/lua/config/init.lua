@@ -5,8 +5,8 @@ require("config.lazy_init")
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local asdfractal_group = augroup("asdfractal", {})
-local yank_group = augroup("HighlightYank", {})
+local asdfractal_group = augroup("asdfractal", { clear = true })
+local yank_group = augroup("HighlightYank", { clear = true })
 local ft_group = augroup("fileType", { clear = true })
 local netrw_group = augroup("netrw", { clear = true })
 
