@@ -49,7 +49,6 @@ autocmd("LspAttach", {
 		-- 	local ns = vim.lsp.diagnostic.get_namespace(client.id)
 		-- 	vim.diagnostic.disable(nil, ns)
 		-- end
-	end
 		-- autocmd("BufWritePre", {
 		-- 	buffer = e.buf,
 		-- 	callback = function()

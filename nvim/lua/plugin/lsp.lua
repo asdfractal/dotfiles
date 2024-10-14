@@ -66,6 +66,13 @@ return {
                 },
                 tsserver = {},
                 bashls = {},
+                -- omnisharp = {
+                --     cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+                --     enable_import_completion = true,
+                --     enable_roslyn_analyzers = true,
+                --     -- filetypes = { "cs", "vb" },
+                --     -- root_dir = require("lspconfig").util.root_pattern("*.csproj"),
+                -- },
             }
 
             require("mason").setup()
@@ -79,6 +86,7 @@ return {
                 "delve",
                 "bashls",
                 "shellcheck",
+                -- "omnisharp",
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
             require("mason-lspconfig").setup({
@@ -248,6 +256,10 @@ return {
             require("gopher").setup()
         end,
     },
+
+    -- {
+    --     "OmniSharp/omnisharp-vim",
+    -- },
 
     {
         "codota/tabnine-nvim",
