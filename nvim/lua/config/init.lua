@@ -45,16 +45,16 @@ autocmd("LspAttach", {
         vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
         vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
 
-		-- if client.name == "eslint" then
-		-- 	local ns = vim.lsp.diagnostic.get_namespace(client.id)
-		-- 	vim.diagnostic.disable(nil, ns)
-		-- end
-		-- autocmd("BufWritePre", {
-		-- 	buffer = e.buf,
-		-- 	callback = function()
-		-- 		vim.lsp.buf.format { async = false, id = e.data.client_id }
-		-- 	end,
-		-- })
+        -- if client.name == "eslint" then
+        -- 	local ns = vim.lsp.diagnostic.get_namespace(client.id)
+        -- 	vim.diagnostic.disable(nil, ns)
+        -- end
+        -- autocmd("BufWritePre", {
+        -- 	buffer = e.buf,
+        -- 	callback = function()
+        -- 		vim.lsp.buf.format { async = false, id = e.data.client_id }
+        -- 	end,
+        -- })
 
         -- highlight when hover and rest
         local client = vim.lsp.get_client_by_id(e.data.client_id)
@@ -105,7 +105,10 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
-vim.g.omni_sql_default_compl_type = 'syntax'
-vim.g.python3_host_prog = '/usr/bin/python3.11'
+vim.g.omni_sql_default_compl_type = "syntax"
+vim.g.python3_host_prog = "/usr/bin/python3.11"
 
 vim.g.fzf_vim = {}
+vim.g.markdown_fenced_languages = {
+    "ts=typescript",
+}

@@ -1,4 +1,5 @@
 # omz
+echo $SUDO_USER
 sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Install zsh plugins

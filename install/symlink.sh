@@ -1,3 +1,4 @@
+DOTFILES=/home/jamesgregory/projects/dotfiles
 rm -rf $HOME/.config/nvim
 mkdir -p $HOME/.config/nvim
 ln -snf $DOTFILES/nvim/* $HOME/.config/nvim

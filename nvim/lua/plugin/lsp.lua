@@ -64,7 +64,8 @@ return {
                         },
                     },
                 },
-                tsserver = {},
+                ts_ls = {},
+                -- tsserver = {},
                 bashls = {},
                 -- omnisharp = {
                 --     cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
@@ -78,20 +79,27 @@ return {
             require("mason").setup()
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
-                "stylua", -- Used to format Lua code
-                "tsserver",
+                -- "stylua", -- Used to format Lua code
+                -- "tsserver",
+                -- "ts_ls",
+                "denols",
                 "lua_ls",
                 "gopls",
-                "goimports",
-                "delve",
+                -- "goimports",
+                -- "delve",
                 "bashls",
-                "shellcheck",
+                -- "shellcheck",
                 -- "omnisharp",
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
             require("mason-lspconfig").setup({
+                ensure_installed = ensure_installed,
+                automatic_installation = false,
                 handlers = {
                     function(server_name)
+                        -- if server_name == "tsserver" then
+                        --     server_name = "ts_ls"
+                        -- end
                         local server = servers[server_name] or {}
                         require("lspconfig")[server_name].setup(server)
                     end,
@@ -242,10 +250,17 @@ return {
                 -- python = { "isort", "black" },
                 --
                 -- You can use 'stop_after_first' to run the first available formatter from the list
-                -- javascript = { "prettierd", "prettier", stop_after_first = true },
+                javascript = { "denols", "prettier", stop_after_first = true },
+                typescript = { "denols", "prettier", stop_after_first = true },
                 go = { "goimports" },
             },
         },
+    },
+
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
     },
 
     {
