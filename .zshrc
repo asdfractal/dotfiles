@@ -1,0 +1,1 @@
+/home/asdfractal/projects/dotfiles/home/.zshrc
