@@ -1,0 +1,31 @@
+font-family = JetBrainsMono Nerd Font Mono
+
+cursor-style = bar
+
+app-notifications = no-clipboard-copy
+
+theme = Oceanic-Next
+background = 000000
+background-opacity = 0.70
+background-blur = false
+confirm-close-surface=false
+
+shell-integration-features = no-cursor,no-sudo,no-title
+gtk-titlebar = false
+
+copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
+
+# Disable Ctrl+Enter fullscreen keybind
+keybind = ctrl+enter=unbind
+#
+# keybind = ctrl+d=scroll_page_fractional:0.5
+# keybind = ctrl+u=scroll_page_fractional:-0.5
+# keybind = ctrl+a>h=goto_split:left
+# keybind = ctrl+a>l=goto_split:right
+# keybind = ctrl+a>n=new_split:right
+keybind = shift+insert=paste_from_clipboard
+keybind = shift+ctrl+insert=paste_from_selection
+
+# To delete from the current position to the start of the line
+keybind = super+backspace=esc:w
