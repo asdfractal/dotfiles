@@ -1,0 +1,24 @@
+[user]
+    name = James Gregory
+    email = james@asdfractal.com
+[push]
+    default = current
+    autoSetupRemote = true
+[core]
+	pager = delta
+    eol = lf
+    editor = nvim
+[delta]
+    side-by-side = true
+[interactive]
+    diffFilter=delta --color-only
+[init]
+	defaultBranch = main
+[branch]
+    sort=-committerdate
+[rerere]
+    enabled = true
+[column]
+    ui = auto
+[branch]
+    sort=-committerdate
