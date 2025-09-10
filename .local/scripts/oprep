@@ -1,0 +1,7 @@
+#!/bin/bash
+
+REPOURL=`git remote -v | grep "fetch" | grep "origin" | cut -d "@" -f2 | cut -d " " -f1 | cut -d "." -f1,2 | tr : /`
+if [ ! -z "$REPOURL" ]; then
+    echo $REPOURL
+    google-chrome-stable https://$REPOURL
+fi

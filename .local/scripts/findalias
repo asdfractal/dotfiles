@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+zsh -ixc : 2>&1 | rg $@

@@ -1,0 +1,5 @@
+#!/bin/zsh
+# aliased to ffo
+
+fzf --preview='bat --color=always --style=numbers {}' --bind shift-down:preview-page-down
+# | xargs -r -I % $EDITOR % ;
