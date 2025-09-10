@@ -1,0 +1,12 @@
+#/etc/pacman.d/hooks/50-pacman-list.hook
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = *
+
+[Action]
+Description = Create a backup list of all installed packages
+When = PostTransaction
+Exec = /bin/bash -c 'pacman -Qqe > /home/asdfractal/.config/pacman/pkglist.txt; exit'

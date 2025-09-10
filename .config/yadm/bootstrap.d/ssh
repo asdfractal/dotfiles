@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Decrypting ssh keys"
+yadm decrypt
