@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+export RESTIC_PASSWORD=$(pass restic)
+BACKUP_REPO="sftp:serv:/feedback/restic-repo"
+KEEP_OPTIONS="--keep-hourly 2 --keep-daily 6 --keep-weekly 3 --keep-monthly 1"
+WEBHOOK_URL="http://192.168.68.206:8000/ping/263deab3-9d11-4d52-89fe-2c43dab829ee"
+
+TMP_FILE=$(mktemp)
+STATUS=0
+
+curl --retry 3 --retry-max-time 120 $WEBHOOK_URL/start
+
+run_command() {
+  local CMD="$1"                      
+  echo "Running: $CMD" >> "$TMP_FILE" 
+  $CMD >> "$TMP_FILE" 2>&1            
+  if [ $? -ne 0 ]; then               
+    STATUS=1
+    OUTPUT=$(cat "$TMP_FILE")
+    curl -fsS -m 10 --retry 3 --retry-max-time 120 --data-raw "$OUTPUT" $WEBHOOK_URL/$STATUS
+    rm "$TMP_FILE"
+    exit 1
+  fi
+  echo -e "\n" >> "$TMP_FILE" 
+}
+
+run_command "restic -r $BACKUP_REPO unlock"
+run_command "restic -r $BACKUP_REPO backup --files-from-verbatim /home/asdfractal/.config/restic/backup-files"
+run_command "restic -r $BACKUP_REPO forget $KEEP_OPTIONS --prune --cleanup-cache"
+
+OUTPUT=$(cat "$TMP_FILE")
+
+curl -fsS -m 10 --retry 3 --retry-max-time 120 --data-raw "$OUTPUT" $WEBHOOK_URL/$STATUS
+
+rm "$TMP_FILE"

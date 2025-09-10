@@ -192,6 +192,7 @@ qt5ct
 qt6ct
 rebuild-detector
 reflector
+restic
 ripgrep
 rsync
 rtkit

@@ -1,3 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 export GH_TOKEN=$(pass /api/tokens/gh)
+export RESTIC_PASSWORD=$(pass restic)
