@@ -1,0 +1,8 @@
+[Unit]
+Description=Run Restic Backup Script
+
+[Service]
+User=asdfractal
+group=asdfractal
+Type=oneshot
+ExecStart=/home/asdfractal/.local/scripts/restic-backup
