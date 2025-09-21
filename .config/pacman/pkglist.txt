@@ -70,6 +70,7 @@ ffmpegthumbnailer
 firefox
 fsarchiver
 fuzzel
+fzf
 ghostty
 git
 git-delta
@@ -95,15 +96,17 @@ hyprlock
 hyprpicker
 hyprpolkitagent
 hyprshot
-hyprsunset-git
+hyprsunset
 inetutils
 iptables-nft
 iwd
 jfsutils
 kvantum
 kvantum-theme-nordic-git
+lact
 less
 lib32-mesa
+lib32-opencl-mesa
 lib32-vulkan-radeon
 libdvdcss
 libgsf
@@ -114,6 +117,8 @@ limine-mkinitcpio-hook
 limine-snapper-sync
 linux-cachyos
 linux-cachyos-headers
+linux-cachyos-lts
+linux-cachyos-lts-headers
 linux-firmware
 logrotate
 lsb-release
@@ -124,7 +129,6 @@ lvm2
 mako
 man-db
 man-pages
-matugen-bin
 mdadm
 meld
 mesa-utils
@@ -153,6 +157,7 @@ nvme-cli
 nwg-look
 obsidian
 octopi
+opencl-mesa
 opendesktop-fonts
 openssh
 openvpn-update-systemd-resolved
@@ -192,7 +197,6 @@ sddm
 seahorse
 sg3_utils
 signal-desktop
-slurp
 smartmontools
 snapper
 sof-firmware
@@ -232,12 +236,12 @@ vlc
 vlc-plugin-ffmpeg
 vlc-plugins-all
 vulkan-radeon
+wev
 wf-recorder-git
 wget
 which
 wireless-regdb
 wireplumber
-wl-clipboard
 wlogout
 wob
 wpa_supplicant
@@ -253,5 +257,5 @@ xorg-xinit
 xorg-xinput
 xorg-xkill
 xorg-xrandr
-xorg-xwayland
 yadm
+zsh
